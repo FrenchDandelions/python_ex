@@ -2,12 +2,10 @@ import sys
 
 
 def main():
-    """
-    ***
-    This main takes a string as parameter and if no string
-    is provided, input is requested from the user
-    ***
-    """
+    """***
+This main takes a string as parameter and if no string
+is provided, input is requested from the user
+***"""
     args = sys.argv
     num_ags = len(args)
     if num_ags > 2:
@@ -43,12 +41,12 @@ def main():
     print(f"{num['PUNC']} punctuation marks")
     print(f"{num['SPACE']} spaces")
     print(f"{num['DIGITS']} digits")
-    # print(f"{s} broo")
     return
 
 
 if __name__ == "__main__":
     try:
+        print(main.__doc__)
         main()
     except Exception as e:
         print(e)
