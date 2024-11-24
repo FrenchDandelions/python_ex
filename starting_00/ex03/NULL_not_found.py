@@ -2,19 +2,19 @@ import math
 
 
 def NULL_not_found(object: any) -> int:
-    object_type = type(object).__name__
-    if object_type == 'NoneType' and object is None:
+    o_type = type(object).__name__
+    if o_type == 'NoneType' and object is None:
         print(f"Nothing : {object} ", end='')
-    elif object_type == 'float' and math.isnan(object):
+    elif o_type == 'float' and math.isnan(object):
         print(f"Cheese : {object} ", end='')
-    elif object_type == 'int' and object == 0:
+    elif o_type == 'int' and object == 0:
         print(f"Zero : {object} ", end='')
-    elif object_type == 'str' and object == '':
+    elif o_type == 'str' and object == '':
         print(f"Empty : {object} ", end='')
-    elif object_type == 'bool' and object is False:
-        print(f"False : {object} ", end='')
+    elif o_type == 'bool' and object is False:
+        print(f"Fake : {object} ", end='')
     else:
-        print("Type not found")
+        print("Type not Found")
         return 1
     print(type(object))
     return 0
