@@ -1,24 +1,23 @@
-import shutil
-from time import sleep
+def getBar(percentage, totalsize=67):
+    """This function returns the progress bar"""
+    to_fill = min(round(percentage / 100 * totalsize), totalsize)
+    empty = totalsize - to_fill
+    return "█" * to_fill + ' ' * empty
 
-
-def getBar(totalsize, sizeperc, sizetime):
-    return ""
-
-def getTimeFormated(time):
-    return time
 
 def ft_tqdm(lst: range) -> None:
-    size_terminal = shutil.get_terminal_size().columns
+    """This is the ft_tqdm function that takes in param a list.
+This function iters over it, prints a progress bar and
+returns the element of said list at x index"""
+    # size_terminal = shutil.get_terminal_size().columns
     size_iterable = len(lst)
-    for index in range(len(lst)):
-        num = round(((index+1)/size_iterable) * 100)
+    bar_length = 67
+    for index in range(size_iterable):
+        num = round(((index + 1) / size_iterable) * 100)
         perc = (str(num) + "%").rjust(4)
-        
-        print(f'\r{perc}{index}', end="")
+        bar = getBar(num, totalsize=bar_length)
+        s = f'\r{perc}|{bar}| {index + 1}/{size_iterable}\033[?25l'
+        print(s, end='', flush=True)
+        if index + 1 == size_iterable:
+            print("\033[?25h")
         yield lst[index]
-
-for i in ft_tqdm(range(50)):
-    sleep(0.1)
-print("HERE MATE", range(50)[-1])
-print(len("100%|"), len("| 12/12 [00:06<00:00,  2.00it/s]"))
