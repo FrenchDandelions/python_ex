@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: ft_package
+Version: 0.0.1
+Summary: A sample test package
+Home-page: https://github.com/FrenchDandelions/ft_package
+Author: thole
+Author-email: thole@student.42.fr
+License: MIT
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+This is a basic package for my python piscine

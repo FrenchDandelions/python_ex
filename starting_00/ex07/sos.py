@@ -49,9 +49,11 @@ a string with alphanum characters to a morse code"""
 def main() -> None:
     """This is the main function to decode"""
     morse = getMorse()
-    assert len(sys.argv) == 2, "the arguments are bad"
+    if len(sys.argv) != 2:
+        raise AssertionError("the arguments are bad")
     line = sys.argv[1].upper()
-    assert not any(i not in morse for i in line), "the arguments are bad"
+    if any(i not in morse.keys() for i in line):
+        raise AssertionError("the arguments are bad")
     line = [morse[i] for i in line]
     print(*line)
 

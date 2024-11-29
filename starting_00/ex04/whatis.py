@@ -6,8 +6,9 @@ def main() -> int:
     size = len(args)
     if size == 1:
         return 0
-    assert size == 2, "more than one argument is provided"
-    print(args[1].isdigit())
+    s = "more than one argument is provided"
+    if size != 2:
+        raise AssertionError(s)
     try:
         i = int(args[1])
         if i % 2 == 0:
@@ -23,5 +24,9 @@ def main() -> int:
 if __name__ == "__main__":
     try:
         main()
+    except KeyboardInterrupt as k:
+        print(type(k).__name__, k, sep=": ")
+    except EOFError as eof:
+        print(type(eof).__name__, eof, sep=": ")
     except Exception as e:
         print(type(e).__name__, e, sep=": ")

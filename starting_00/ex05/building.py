@@ -8,11 +8,13 @@ is provided, input is requested from the user
 ***"""
     args = sys.argv
     num_ags = len(args)
-    assert num_ags <= 2, "AssertionError: more than one argument is provided"
+    s = "more than one argument is provided"
+    if num_ags > 2:
+        raise AssertionError(s)
     s = ""
     if num_ags == 1:
         print("What is the text to count?")
-        s = input()
+        s = sys.stdin.readline()
     else:
         s = args[1]
     num = {"UP": 0, "LOW": 0, "SPACE": 0, "PUNC": 0, "DIGITS": 0}
@@ -39,7 +41,10 @@ is provided, input is requested from the user
 
 if __name__ == "__main__":
     try:
-        # print(main.__doc__)
         main()
+    except KeyboardInterrupt as k:
+        print(type(k).__name__, k, sep=": ")
+    except EOFError as eof:
+        print(type(eof).__name__, eof, sep=": ")
     except Exception as e:
-        print(e)
+        print(type(e).__name__, e, sep=": ")
