@@ -8,7 +8,6 @@ import matplotlib
 def main() -> None:
     matplotlib.use('TkAgg')
     load = ft_load("animal.jpeg")
-    print(load)
 
     gray_image = Image.fromarray(load).convert("L")
     gray_array = np.array(gray_image, copy=True)
@@ -27,13 +26,18 @@ def main() -> None:
     r_zoom = zoomed_array[:, :, np.newaxis] if len_shape == 2 else zoomed_array
 
     new_axis_shape = r_zoom.shape
-
-    print("New shape after slicing:", new_axis_shape, "or", shape)
+    print("The shape of image is:", new_axis_shape, "or", shape)
     print(r_zoom)
 
-    img = Image.fromarray(zoomed_array)
-    img.save("zoomed_img.jpeg")
-    plt.imshow(Image.fromarray(zoomed_array), cmap="gray")
+    img = Image.fromarray(zoomed_array).rotate(90)
+    rotated_array = np.array(img, copy=True)
+    transpose = rotated_array.T
+
+    print("New shape after Transpose:", transpose.shape)
+    print(transpose)
+
+    img.save("rotated_img.jpeg")
+    plt.imshow(img, cmap="gray")
     plt.axis('on')
     plt.show()
 
