@@ -49,7 +49,10 @@ def ft_blue(array) -> np.array:
 
 def ft_grey(array) -> np.array:
     """This function turns the array into a greyscale image"""
-    grey = np.dot(array[:, :, :], [0.2989, 0.5870, 0.1140])
+    red = array[:, :, 0] / (1 / 0.2989)
+    green = array[:, :, 1] / (1 / 0.5870)
+    blue = array[:, :, 2] / (1 / 0.1140)
+    grey = red + green + blue
     n_array = np.stack([grey] * 3, axis=-1).astype(np.uint8)
     _show_image(n_array)
     return n_array
