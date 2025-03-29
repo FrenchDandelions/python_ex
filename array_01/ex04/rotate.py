@@ -6,6 +6,13 @@ import matplotlib
 
 
 def main() -> None:
+    """
+    This is the main function of the project, it
+    loads the image animal.jpeg, put in in black and
+    white and slice the array to have a zoom like
+    effect when loading the new array. Before loading
+    it we use the Image lib to rotate the image directly.
+    """
     matplotlib.use('TkAgg')
     load = ft_load("animal.jpeg")
 
@@ -30,6 +37,8 @@ def main() -> None:
     print(r_zoom)
 
     img = Image.fromarray(zoomed_array).rotate(90)
+    zoomed_array = np.array(img, copy=True)[::-1]
+    img = Image.fromarray(zoomed_array)
     rotated_array = np.array(img, copy=True)
     transpose = rotated_array.T
 
