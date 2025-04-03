@@ -20,7 +20,7 @@ gross national product of the year 1900 for each country. """
     plt.scatter(income_each_country, life_expec_each)
 
     plt.xscale('log')
-    plt.xticks([300, 1000, 10000], labels=["300", "1000", "10k"])
+    plt.xticks([300, 1000, 10000], labels=["300", "1k", "10k"])
     plt.xlim(300, 10000)
 
     plt.xlabel("Gross domestic product")

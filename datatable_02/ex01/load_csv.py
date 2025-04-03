@@ -15,12 +15,12 @@ The accepted extension is: '.csv'.
             return None
         dataset = pd.read_csv(path)
     except Exception as e:
+        print(type(e).__name__, e, sep=" : ")
         return None
-        print(e)
     print("Loading dataset of dimensions", dataset.shape)
     return dataset
 
 
 if __name__ == "__main__":
     print(load.__doc__)
-    print(load("life_expectancy_years.csv"))
+    print(load("population_total.csv"))

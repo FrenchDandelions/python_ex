@@ -17,12 +17,14 @@ def main() -> None:
 
     values_france = frame_france.iloc[0, 1:].values
     values_france = [float(i[:-1]) for i in values_france]
+    values_france = values_france[:250]
     values_belgium = frame_Belgium.iloc[0, 1:].values
     values_belgium = [float(i[:-1]) for i in values_belgium]
+    values_belgium = values_belgium[:250]
+    years = years[:250]
 
     plt.plot(years, values_france, label="France")
     plt.plot(years, values_belgium, label="Belgium")
-
     plt.xticks(range(years[0], 2051, 40))
     plt.xlim((years[0], 2050))
 
